@@ -82,7 +82,7 @@ const CertificateGenerate: FC = () => {
       mainClassName="certificate-generate"
       header={
         <div className="p-panel__header is-sticky">
-          <h1 className="p-panel__title">Setup LXD UI</h1>
+          <h1 className="p-panel__title">Setup Incus UI</h1>
         </div>
       }
     >
@@ -137,12 +137,12 @@ const CertificateGenerate: FC = () => {
                 <Col size={6}>
                   <div className="p-stepped-list__content">
                     <p>
-                      Download <code>lxd-ui.crt</code> and add it to the LXD
+                      Download <code>incus-ui.crt</code> and add it to the Incus
                       trust store
                     </p>
                     <div className="p-code-snippet">
                       <pre className="p-code-snippet__block--icon">
-                        <code>lxc config trust add Downloads/lxd-ui.crt</code>
+                        <code>incus config trust add-certificate Downloads/incus-ui.crt</code>
                       </pre>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ const CertificateGenerate: FC = () => {
                     <Button
                       onClick={() =>
                         downloadText(
-                          `lxd-ui-${location.hostname}.crt`,
+                          `incus-ui-${location.hostname}.crt`,
                           certs.crt,
                         )
                       }
@@ -174,7 +174,7 @@ const CertificateGenerate: FC = () => {
                       certs
                         ? () =>
                             downloadBase64(
-                              `lxd-ui-${location.hostname}.pfx`,
+                              `incus-ui-${location.hostname}.pfx`,
                               certs.pfx,
                             )
                         : undefined
@@ -190,7 +190,7 @@ const CertificateGenerate: FC = () => {
                 </Col>
                 <Col size={6}>
                   <div className="p-stepped-list__content">
-                    <p>Enjoy LXD UI.</p>
+                    <p>Enjoy Incus UI.</p>
                   </div>
                 </Col>
               </Row>
