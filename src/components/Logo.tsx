@@ -15,11 +15,11 @@ const Logo: FC = () => {
   return (
     <NavLink className="p-panel__logo" to={getLogoLink()}>
       <img
-        src="/ui/assets/img/lxd-logo.svg"
-        alt="LXD-UI logo"
+        src="/ui/assets/img/incus-logo.svg"
+        alt="Incus-UI logo"
         className="p-panel__logo-image"
       />
-      <div className="logo-text p-heading--4">Canonical LXD</div>
+      <div className="logo-text p-heading--4">Incus UI</div>
     </NavLink>
   );
 };

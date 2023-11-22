@@ -24,7 +24,6 @@ const Login: FC = () => {
     <CustomLayout>
       <Row className="empty-state">
         <Col size={6} className="col-start-large-4">
-          <Icon name="containers" className="empty-state-icon lxd-icon" />
           <h1 className="p-heading--4 u-sv-2">Login</h1>
           {hasOidc && (
             <>
