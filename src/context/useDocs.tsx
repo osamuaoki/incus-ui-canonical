@@ -1,7 +1,7 @@
 import { useSettings } from "context/useSettings";
 
 export const useDocs = (): string => {
-  const remoteBase = "https://documentation.ubuntu.com/lxd/en/latest";
+  const remoteBase = "/documentation";
   const localBase = "/documentation";
 
   const { data: settings } = useSettings();
