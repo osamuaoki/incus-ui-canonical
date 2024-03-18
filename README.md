@@ -1,3 +1,82 @@
+# Incus-UI-Canonical
+
+Incus-UI-Canonical is a browser frontend for [Incus](https://github.com/lxc/incus). It enables easy and accessible container and virtual machine management.
+Targets small and large scale private clouds.
+
+# Background
+
+This [Incus-UI-Canonical](https://osamuaoki.github.com/incus-ui-canonical) is a forked project of [LXD-UI](https://github.com/canonical/lxd-ui).
+
+This [Incus-UI-Canonical](https://osamuaoki.github.com/incus-ui-canonical) is targeted to work with [Incus](https://github.com/lxc/incus) instead of [LXD](https://github.com/canonical/lxd).
+
+[LXD has been moved to Canonical](https://linuxcontainers.org/lxd/) and a community fork of LXD, [Incus](https://github.com/lxc/incus), is now part of the [Linux Containers project](https://linuxcontainers.org/).
+
+Canonical packages [LXD-UI](https://github.com/canonical/lxd-ui) as a part of `lxd` snap package.
+
+Lead [Incus](https://github.com/lxc/incus) developer zabby is providing his `incus` deb package at [Incus package repository](https://github.com/zabbly/incus).  Zabby bundles patched lxd-ui web page into `/opt/incus/ui` of his deb package.
+
+When I filed [a wishlist bug report to bundle zabby's static web page in Debian's incus package: #1067041](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1067041) and got a reasonable response that such thing needs to be packaged as a separate package.
+
+Here is my first try to create such package which can work with the official [Debian's incus package](https://tracker.debian.org/pkg/incus).
+
+Essential part of package modifications are copied from zabby's [workflow](https://github.com/zabbly/incus/blob/daily/.github/workflows/builds.yml) and [ui-canonical-* patches and sed script](https://github.com/zabbly/incus/tree/daily/patches).
+
+I realized existence of zabby's code and structure from others packaging this part of code.
+
+* https://github.com/KosmX/incus-ui-canonical-arch Arch Linux package
+* https://gist.github.com/vaxvhbe/ce679df15fc521c8aca1ff9ddf537201 RPM spec file?
+
+# Install
+
+    sudo apt update
+    sudo apt devscripts yarnpkg npm
+    git clone https://osamuaoki.github.com/incus-ui-canonical
+    cd incus-ui-canonical
+    git remote add canonical https://github.com/canonical/lxd-ui
+    #origtargz
+    git archive --prefix=incus-ui-canonical-0.6/ --format=tar.gz -o ../incus-ui-canonical_0.6.orig.tar.gz incus-ui-canonical/0.6
+    git checkout debian
+    debuild
+    cd ..
+    sudo dpkg -i incus-ui-canonical*.deb
+
+The above deb-package build process accesses the external javascript repository site outside of the official Debian package repository.
+
+Thus this generated binary deb package is not ready to be uploaded to the Debian repository.
+
+# Configuration of Incus
+
+You need to start the incus daemon while setting its environment with `INCUS_UI=/var/lib/incus/ui`.
+
+You can set it in `/etc/environment` until the official `incus` package support this.
+
+
+  incus config set core.https_address ":8443"
+
+Then start any modern browser with it URL pointing to https://localhost:8443.
+
+# LICENSE
+
+See [LICENSE](LICENSE) and each file.  My code is under GPL3.
+
+# TODO
+
+* Update to newer lxd-ui. (0.7)
+* Provide deb in an external apt repository.
+* Make this build to be compliant for the uploading to Debian repository.
+
+# Reference information
+
+Please refer to the guide and references available for LXD-UI.
+
+* Substitute `lxc` command with `incus` command.
+* Substitute `lxdbr0` with `incusbr0` for network device.
+* Substitute `LXD_*` environment variables with `INCUS_*` environment variables.
+
+Please don't report issues of this fork to Canonical.
+
+The followings are quoted from the original LXD-UI by Canonical with section headers made to be subsection headers
+
 # LXD-UI
 
 LXD-UI is a browser frontend for LXD. It enables easy and accessible container and virtual machine management.
