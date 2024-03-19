@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+# You must remove unused comment lines for the released package.
+#export DH_VERBOSE = 1
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+origtargz:
+	git archive --prefix=incus-ui-canonical-0.6/ --format=tar.gz -o ../incus-ui-canonical_0.6.orig.tar.gz incus-ui-canonical/0.6
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	sed -i -f ./ui-canonical-renames.sed src/*/*.ts* src/*/*/*.ts* src/*/*/*/*.ts*
+	# Debian uses "yarnpkg" instead of "yarn"
+	yarnpkg install
+	yarnpkg build

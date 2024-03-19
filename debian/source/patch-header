@@ -1,0 +1,27 @@
+The Debian packaging of incus-ui-canonical is maintained in git, using the
+merging workflow described in dgit-maint-merge(7).  There isn't a patch queue
+that can be represented as a quilt series.
+
+Currently, incus-ui-canonical is hosted at
+https://github.com/osamuaoki/incus-ui-canonical.git (Once someone takes over to
+make this a real Debian package, this URL should be moved to SALSA.)
+
+Seeing the git history in the above repository should give you good
+clear perspective what is in the single combined diff of this package.
+
+If incus-ui-canonical is ever uploaded to the Debian, the following may be
+used.
+
+A detailed breakdown of the changes is available from their canonical
+representation - git commits in the packaging repository.  For example,
+to see the changes made by the Debian maintainer in the first upload of
+upstream version 1.2.3, you could use:
+
+    % git clone https://git.dgit.debian.org/incus-ui-canonical
+    % cd foo
+    % git log --oneline 1.2.3..debian/1.2.3-1 -- . ':!debian'
+
+(If you have dgit, use `dgit clone incus-ui-canonical`, rather than plain `git clone`.)
+
+A single combined diff, containing all the changes, follows.
+

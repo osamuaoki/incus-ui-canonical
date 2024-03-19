@@ -1,0 +1,11 @@
+incus-ui-canonical for Debian
+
+This incus-ui-canonical package is based on lxd-ui package by canonical.
+
+This incus-ui-canonical package applies patches used by zabby's incus package
+which bundles this static javascript based web page and modifies it to target
+its use with incus instead of lxd.
+
+The rebrading was also performed to remove reference to canonical.
+
+ -- Osamu Aoki <osamu@debian.org>  Mon, 18 Mar 2024 19:58:31 +0900

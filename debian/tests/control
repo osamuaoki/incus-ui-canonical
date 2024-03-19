@@ -1,0 +1,3 @@
+Tests: check-script
+Depends: @
+Restrictions: superficial

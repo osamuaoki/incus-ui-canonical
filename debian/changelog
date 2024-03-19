@@ -1,0 +1,5 @@
+incus-ui-canonical (0.6-1) UNRELEASED; urgency=low
+
+  * Pre-release proof-of-concept.
+
+ -- Osamu Aoki <osamu@debian.org>  Mon, 18 Mar 2024 19:58:31 +0900

@@ -1,0 +1,4 @@
+#!/bin/sh -e
+# check syntax of browser start script
+echo "Check existence of index.html"
+test -e /var/lib/incus/ui/index.html

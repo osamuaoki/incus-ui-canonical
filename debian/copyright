@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: incus-ui-canonical
+Upstream-Contact: Osamu Aoki <osamu@debian.org>
+Source: https://github.com/osamuaoki/incus-ui-canonical
+# Please double check copyright with the licensecheck(1) command etc.
+
+Files:     *
+Copyright: ??? (TBD)
+License:   GPL-3.0+
+

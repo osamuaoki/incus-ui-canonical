@@ -1,0 +1,18 @@
+Source: incus-ui-canonical
+Section: admin
+Priority: optional
+Maintainer: Osamu Aoki <osamu@debian.org>
+Build-Depends: debhelper-compat (= 13), npm, yarnpkg
+Standards-Version: 4.6.2
+Homepage: https://osamuaoki.github.com/incus-ui-canonical
+Rules-Requires-Root: no
+#Vcs-Git: https://salsa.debian.org/debian/incus-ui-canonical.git
+#Vcs-Browser: https://salsa.debian.org/debian/incus-ui-canonical
+
+Package: incus-ui-canonical
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: tentative web page for incus
+ This is proof-of-concept package to provide a static web page
+ content for use with the Debian incus package.

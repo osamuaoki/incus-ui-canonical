@@ -1,0 +1,20 @@
+#
+# DEP-12: Per-package machine-readable metadata about Upstream
+#        Please check * https://dep-team.pages.debian.net/deps/dep12/
+#                     * https://wiki.debian.org/UpstreamMetadata
+Repository: https://github.com/osamuaoki/incus-ui-canonical
+Repository-Browse: https://github.com/osamuaoki/incus-ui-canonical
+Bug-Database: https://github.com/osamuaoki/incus-ui-canonical/issues
+Bug-Submit: https://github.com/osamuaoki/incus-ui-canonical/issues/new
+Reference:
+  Author: <please use full names and separate multiple author by the keyword "and">
+  Title:
+  Journal:
+  Year:
+  Volume:
+  Number:
+  Pages:
+  DOI:
+  PMID:
+  URL:
+  eprint:
