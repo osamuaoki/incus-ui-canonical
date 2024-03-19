@@ -28,18 +28,63 @@ I realized existence of zabby's code and structure from others packaging this pa
 
 # Install
 
-    sudo apt update
-    sudo apt devscripts yarnpkg npm
-    git clone https://osamuaoki.github.com/incus-ui-canonical
-    cd incus-ui-canonical
-    git remote add canonical https://github.com/canonical/lxd-ui
-    #origtargz
-    git archive --prefix=incus-ui-canonical-0.6/ --format=tar.gz -o ../incus-ui-canonical_0.6.orig.tar.gz incus-ui-canonical/0.6
-    git checkout debian
-    debuild
-    cd ..
-    sudo dpkg -i incus-ui-canonical*.deb
+## For Debain/Ubuntu system (via APT)
 
+Create `/etc/apt/sources.list.d/osamuaoki.sources` as:
+
+```
+Types: deb
+URIs: https://osamuaoki.github.io/debian/
+Suites: sid
+Components: main
+Signed-By:
+ -----BEGIN PGP PUBLIC KEY BLOCK-----
+ .
+ mDMEZZpSFhYJKwYBBAHaRw8BAQdA9T6mXRx7Zc64kQC+dKB2RgxNHK0+KFlCT8b/
+ JtFAWRu0HU9zYW11IEFva2kgPG9zYW11QGRlYmlhbi5vcmc+iJIEExYIADsCGwMF
+ CwkIBwIGFQoJCAsCBBYCAwECHgECF4AWIQTYnmsJtCCYzq8IGrFtbTgJIV9yDQUC
+ ZZpXMAIZAQAKCRBtbTgJIV9yDc+YAQDhuq/q76qobfHKi8C2MT83u1qZkg2eCpEF
+ UkyvrE59fwD4+d+IbCls19F3MCRuEmyvYQr+sghC82lnUiFOxUq/DbQhT3NhbXUg
+ QW9raSA8b3NhbXUuYW9raUBnbWFpbC5jb20+iJAEExYIADgWIQTYnmsJtCCYzq8I
+ GrFtbTgJIV9yDQUCZZpVVQIbAwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRBt
+ bTgJIV9yDehWAP9lG8DUBwUPl0kCTezQItOxQfDXgJ0Lyhv8dv4B1iWxjgEA8YBv
+ gCgDGby+pQmRX/STM7fu5LG62785oIj17HuMaQG4OARlmlIWEgorBgEEAZdVAQUB
+ AQdA+q2tgbmHC7MQv5bTHyawYrITRw7Gdg7M0p0+oSRtzS8DAQgHiHgEGBYIACAC
+ GwwWIQTYnmsJtCCYzq8IGrFtbTgJIV9yDQUCZZpU3QAKCRBtbTgJIV9yDdz6AQC8
+ yC8mQnwkj9D2x84oSdEpAckJ/e47kLDN3y/HIOwXbAD/ZCv2Ek1Exh/7SrxNL65J
+ ipPuCsH1vTsxbEE14mEs2Ag=
+ =IDSM
+ -----END PGP PUBLIC KEY BLOCK-----
+# This is written in DEB822-STYLE FORMAT as described in sources.list (5)
+```
+
+This adds my personal APT repository.  Then `incus-ui-canonical` can be installed by
+
+```console
+ $ sudo apt update && sudo apt install incus-ui-canonical
+```
+or interactively with
+
+```console
+ $ sudo aptitude -u
+```
+
+### For other system (or for testing)
+
+```console
+ $ sudo apt update
+ $ sudo apt devscripts yarnpkg npm
+ $ git clone https://osamuaoki.github.com/incus-ui-canonical
+ $ cd incus-ui-canonical
+ $ git remote add canonical https://github.com/canonical/lxd-ui
+ $ git remote update
+ $ #origtargz
+ $ git archive --prefix=incus-ui-canonical-0.6/ --format=tar.gz -o ../incus-ui-canonical_0.6.orig.tar.gz incus-ui-canonical/0.6
+ $ git checkout debian
+ $ debuild
+ $ cd ..
+ $ sudo dpkg -i incus-ui-canonical*.deb
+```
 The above deb-package build process accesses the external javascript repository site outside of the official Debian package repository.
 
 Thus this generated binary deb package is not ready to be uploaded to the Debian repository.
@@ -51,9 +96,11 @@ You need to start the incus daemon while setting its environment with `INCUS_UI=
 You can set it in `/etc/environment` until the official `incus` package support this.
 
 
-  incus config set core.https_address ":8443"
+```console
+ $ incus config set core.https_address ":8443"
+```
 
-Then start any modern browser with it URL pointing to https://localhost:8443.
+Then start any modern browser with it URL pointing to `https://localhost:8443`.
 
 # LICENSE
 
@@ -62,8 +109,8 @@ See [LICENSE](LICENSE) and each file.  My code is under GPL3.
 # TODO
 
 * Update to newer lxd-ui. (0.7)
-* Provide deb in an external apt repository.
-* Make this build to be compliant for the uploading to Debian repository.
+* License check and other packaging details including dependencies.
+* Make this build to be compliant for the uploading to Debian repository. (Need help here)
 
 # Reference information
 
